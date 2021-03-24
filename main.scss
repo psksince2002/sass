@@ -1,0 +1,47 @@
+@import './colors';
+$font-weights:(
+    "regular":400,
+    "medium":500,
+    "bold":700,
+);
+
+body{
+    background-color:$primary;
+}
+
+@function weight($weight-name) {
+         @return map-get($font-weights , $weight-name )
+}
+
+@mixin flex{
+    display:flexbox;
+    align-items:center;
+    justify-content:center;
+}
+
+@mixin size($size){
+     font-size:$size;
+}
+
+.main{
+  margin:0 auto;
+  padding:20px;
+  @include flex;
+  #{&}_p1{
+      font-weight:map-get($font-weights,bold);
+      color:$secondary;
+      font-family:chiller;
+      &:hover{
+          color:$hover;
+          @include size(26px);
+      }
+  };
+  #{&}_p2{
+      @extend.main_p1;
+      &:hover{
+          color:$hover;
+          @include size(20px);
+      }
+  };
+
+}
